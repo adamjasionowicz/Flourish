@@ -7,6 +7,7 @@ using Flourish.Infrastructure;
 using Flourish.Infrastructure.Data;
 using Flourish.Web;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.FeatureManagement;
 using Microsoft.OpenApi.Models;
 using Serilog;
 
@@ -25,10 +26,12 @@ builder.Host.ConfigureAppConfiguration(builder =>
             .ConfigureRefresh(refresh =>
             {
               refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
-                     .SetCacheExpiration(new TimeSpan(0, 0, 5));
-                     //.SetCacheExpiration(new TimeSpan(0, 5, 0)); 5 mins 
+                     .SetCacheExpiration(new TimeSpan(0, 0, 10)); // AJ change to minutes in prod
             })
-           .UseFeatureFlags());
+           .UseFeatureFlags(flagOptions =>
+           {
+             flagOptions.CacheExpirationInterval = TimeSpan.FromSeconds(5);
+           }));
 });
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
@@ -50,6 +53,7 @@ builder.Services.AddRazorPages();
 
 //allows feature flag values to be refreshed at a recurring interval while app continues to receive requests.
 builder.Services.AddAzureAppConfiguration();
+builder.Services.AddFeatureManagement(); // register IFeatureManager in IoC container
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -66,6 +70,11 @@ builder.Services.Configure<ServiceConfig>(config =>
   config.Path = "/listservices";
 });
 
+//Autofac
+// Call UseServiceProviderFactory on the Host sub property 
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+// Call ConfigureContainer on the Host sub property 
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 {
   containerBuilder.RegisterModule(new DefaultCoreModule());

@@ -1,22 +1,40 @@
 ﻿using System.Diagnostics;
 using Flourish.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.FeatureManagement;
+
 
 namespace Flourish.Web.Controllers;
 
 /// <summary>
 /// A sample MVC controller that uses views.
-/// Razor Pages provides a better way to manage view-based content, since the behavior, viewmodel, and view are all in one place,
-/// rather than spread between 3 different folders in your Web project. Look in /Pages to see examples.
-/// See: https://ardalis.com/aspnet-core-razor-pages-%E2%80%93-worth-checking-out/
 /// </summary>
 public class HomeController : Controller
 {
-  public IActionResult Index()
+  private readonly IFeatureManager _featureManager;
+
+  public HomeController(IFeatureManager featureManager)
   {
+    _featureManager = featureManager;
+  }
+
+  public async Task<IActionResult> Index()
+  {
+    var showMeTheMoneyEnabled = await _featureManager.IsEnabledAsync(nameof(Flags.ShowMeTheMoney));
+
+    if (showMeTheMoneyEnabled)
+    {
+      ViewBag.ShowMeTheMoneyEnabled = true;
+    }
+
     return View();
   }
 
   [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
   public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 }
+
+public enum Flags
+{
+  ShowMeTheMoney
+} 

@@ -36,11 +36,14 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
+    @if (ViewBag.ShowMeTheMoneyEnabled == true)
+    {
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <p class="card-text">Feature 2 is toggled on!</p>
+                <p class="card-text">Show me the money is toggled on!</p>
             </div>
         </div>
     </div>
+    }
 </div>
