@@ -20,11 +20,17 @@ public class HomeController : Controller
 
   public async Task<IActionResult> Index()
   {
+    // MVC demo - It works exactly the same way for API endpoints.
     var showMeTheMoneyEnabled = await _featureManager.IsEnabledAsync(nameof(Flags.ShowMeTheMoney));
 
     if (showMeTheMoneyEnabled)
     {
       ViewBag.ShowMeTheMoneyEnabled = true;
+    }
+
+    if (!showMeTheMoneyEnabled)
+    {
+      ViewBag.ShowMeTheMoneyEnabled = false;
     }
 
     return View();

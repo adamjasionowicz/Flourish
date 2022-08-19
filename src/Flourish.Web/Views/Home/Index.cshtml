@@ -29,6 +29,7 @@
     <div class="col-md-4">
         <h1>Azure toggle demo:</h1>
     </div>
+
     <div class="col-md-4">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
@@ -36,14 +37,16 @@
             </div>
         </div>
     </div>
-    @if (ViewBag.ShowMeTheMoneyEnabled == true)
+
+    @if (ViewBag.ShowMeTheMoneyEnabled)
     {
         <div class="col-md-4">
             <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <p class="card-text">Show me the money is toggled on!</p>
+                <div class="card-body">
+                    <p class="card-text">Show me the money is toggled on!</p>
+                </div>
             </div>
         </div>
-    </div>
     }
+
 </div>
