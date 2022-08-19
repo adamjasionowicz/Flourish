@@ -1,26 +1,45 @@
-﻿@{
-    ViewData["Title"] = "Feature Toggle example";
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = ".Net 6 examples";
 }
+<style>
+    body {
+        background-color: @Configuration["TestApp:Settings:BackgroundColor"]
+    }
+
+    h1 {
+        color: @Configuration["TestApp:Settings:FontColor"];
+        font-size: @Configuration["TestApp:Settings:FontSize"]px;
+    }
+</style>
+
+<div class="row" style="margin-bottom: 40px;">
+    <div class="col-md-12">
+        <h1>Azure config demo:</h1>
+        <div style="margin-top: 40px;">
+            <p>
+                @Configuration["TestApp:Settings:Message"]
+            </p>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-md-4">
-        <h3>Feature toggle demo</h3>
-
-            <ul>
-                <li>Release hundreds of times per day!</li>
-            </ul>
-    
+        <h1>Azure toggle demo:</h1>
     </div>
     <div class="col-md-4">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <p class="card-text">Feature 1 is live!</p>
+                <p class="card-text">Feature 1 is toggled on!</p>
             </div>
         </div>
     </div>
     <div class="col-md-4">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <p class="card-text">Feature 2 is live!</p>
+                <p class="card-text">Feature 2 is toggled on!</p>
             </div>
         </div>
     </div>
