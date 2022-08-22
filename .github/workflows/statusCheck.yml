@@ -1,4 +1,4 @@
-name: .NET
+name: .NET Status Check
 
 on:
   push:
