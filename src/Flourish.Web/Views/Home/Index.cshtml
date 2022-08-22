@@ -17,7 +17,7 @@
 <div class="px-4 pt-5 my-5 text-center border-bottom">
     <h1 class="display-4 fw-bold">Flourish</h1>
     <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">.Net 6 with Microsoft Azure App Configuration.</p>
+        <p class="lead mb-4">For educational purposes only.</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
             @if (ViewBag.AcceptContact)
             {
@@ -38,39 +38,34 @@
 <div class="row" style="margin-bottom: 40px;">
     <div class="col-md-12">
         <div style="margin-top: 40px;">
-            <p>
+            <p class="lead mb-4 text-center">
                 @Configuration["TestApp:Settings:Message"]
             </p>
         </div>
     </div>
 </div>
 
-<div class="row" style="margin-bottom: 40px;">
-    <div class="col-md-12">
-        <div style="margin-top: 40px;">
-            <p></p>
-        </div>
-    </div>
-</div>
-
 <div class="row">
+    <div class="col-md-2"></div>
     <div class="col-md-3">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <p class="card-text">This is called a card.</p>
+                <p>This site is for educational purposes only.</p>
             </div>
         </div>
     </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-3">
     @if (ViewBag.ShowMeTheMoneyEnabled)
     {
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <p class="card-text">Show me the money card is toggled on.<p>
-                        The UI view was passed a "flag" which conditionally enables/disables this card.
-                    </p></p>
-                </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                    <p class="card-text">Show me the money card is toggled on.</p>
+                    <p>The UI view was passed a "flag" which conditionally enables/disables this card.</p>
             </div>
         </div>
     }
+    </div>
+    <div class="col-md-2"></div>
 </div>
