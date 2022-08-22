@@ -26,6 +26,7 @@
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
     <PackageVersion Include="Microsoft.Extensions.Logging.AzureAppServices" Version="6.0.8" />
     <PackageVersion Include="Microsoft.FeatureManagement" Version="3.0.0-preview" />
+    <PackageVersion Include="Microsoft.FeatureManagement.AspNetCore" Version="3.0.0-preview" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
     <PackageVersion Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.5" />
     <PackageVersion Include="Moq" Version="4.18.1" />

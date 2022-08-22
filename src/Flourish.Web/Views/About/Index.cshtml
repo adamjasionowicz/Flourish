@@ -1,0 +1,29 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = ".Net 6 examples";
+}
+<style>
+    body {
+        background-color: @Configuration["TestApp:Settings:BackgroundColor"]
+    }
+
+    h1 {
+        color: @Configuration["TestApp:Settings:FontColor"];
+        font-size: @Configuration["TestApp:Settings:FontSize"]px;
+    }
+</style>
+
+<div class="row" style="margin-bottom: 40px;">
+    <div class="col-md-12">
+        <h1>About us</h1>
+        <div style="margin-top: 40px;">
+            <p>
+                Our experienced board, executive and leadership teams work to ensure Flourish focuses on innovation and performance for our customers.
+            </p>
+            <p>
+                The controller action method (endpoint) contains a Feature Gate Attribute!
+            </p>
+        </div>
+    </div>
+</div>

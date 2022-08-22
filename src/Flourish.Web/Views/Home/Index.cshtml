@@ -14,9 +14,29 @@
     }
 </style>
 
+<div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold">Flourish</h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">.Net 6 with Microsoft Azure App Configuration.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+            @if (ViewBag.AcceptContact)
+            {
+                <div class="col-md-3">
+                    <a asp-area="" asp-controller="Contact" asp-action="Index">Contact us feature</a>
+                </div>
+            }
+            @if (ViewBag.TellMeAboutIt)
+            {
+                <div class="col-md-3">
+                    <a asp-area="" asp-controller="About" asp-action="Index">About us feature</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
 <div class="row" style="margin-bottom: 40px;">
     <div class="col-md-12">
-        <h1>Azure config demo:</h1>
         <div style="margin-top: 40px;">
             <p>
                 @Configuration["TestApp:Settings:Message"]
@@ -25,28 +45,32 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h1>Azure toggle demo:</h1>
+<div class="row" style="margin-bottom: 40px;">
+    <div class="col-md-12">
+        <div style="margin-top: 40px;">
+            <p></p>
+        </div>
     </div>
+</div>
 
-    <div class="col-md-4">
+<div class="row">
+    <div class="col-md-3">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
-                <p class="card-text">Feature 1 is toggled on!</p>
+                <p class="card-text">This is called a card.</p>
             </div>
         </div>
     </div>
-
     @if (ViewBag.ShowMeTheMoneyEnabled)
     {
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <p class="card-text">Show me the money is toggled on!</p>
+                    <p class="card-text">Show me the money card is toggled on.<p>
+                        The UI view was passed a "flag" which conditionally enables/disables this card.
+                    </p></p>
                 </div>
             </div>
         </div>
     }
-
 </div>
