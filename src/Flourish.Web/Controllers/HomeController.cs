@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using Flourish.Web.ViewModels;
+using Flourish.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.FeatureManagement;
-
 
 namespace Flourish.Web.Controllers;
 
@@ -20,9 +20,11 @@ public class HomeController : Controller
 
   public async Task<IActionResult> Index()
   {
-    // MVC demo - It works exactly the same way for API endpoints.
     var showMeTheMoneyEnabled = await _featureManager.IsEnabledAsync(nameof(Flags.ShowMeTheMoney));
+    var acceptContactEnabled = await _featureManager.IsEnabledAsync(nameof(Flags.AcceptContact));
+    var tellMeAboutItEnabled = await _featureManager.IsEnabledAsync(nameof(Flags.TellMeAboutIt));
 
+    // Main money making feature flag conditions
     if (showMeTheMoneyEnabled)
     {
       ViewBag.ShowMeTheMoneyEnabled = true;
@@ -33,14 +35,31 @@ public class HomeController : Controller
       ViewBag.ShowMeTheMoneyEnabled = false;
     }
 
+    // Contact Us nav feature flag conditions
+    if (acceptContactEnabled)
+    {
+      ViewBag.AcceptContact = true;
+    }
+
+    if (!acceptContactEnabled)
+    {
+      ViewBag.AcceptContact = false;
+    }
+
+    // About nav feature flag conditions
+    if (tellMeAboutItEnabled)
+    {
+      ViewBag.TellMeAboutIt = true;
+    }
+
+    if (!tellMeAboutItEnabled)
+    {
+      ViewBag.TellMeAboutIt = false;
+    }
+
     return View();
   }
 
   [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
   public IActionResult Error() => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 }
-
-public enum Flags
-{
-  ShowMeTheMoney
-} 

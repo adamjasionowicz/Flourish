@@ -1,0 +1,38 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = ".Net 6 examples";
+}
+<style>
+    body {
+        background-color: @Configuration["TestApp:Settings:BackgroundColor"]
+    }
+
+    h1 {
+        color: @Configuration["TestApp:Settings:FontColor"];
+        font-size: @Configuration["TestApp:Settings:FontSize"]px;
+    }
+</style>
+
+<div class="row" style="margin-bottom: 40px;">
+    <div class="col-md-12">
+        <h1>Contact us</h1>
+        <div style="margin-top: 40px;">
+            <p>
+                Email: sales@tbc
+            </p>
+            @if (ViewBag.ShowMeTheMoneyEnabled)
+            {
+                <p>
+                    Phone: 0800 showmethemoney - The UI view was passed a "flag" which conditionally enables/disables this paragraph.
+                </p>
+            }
+            <p>
+                The controller contains a Feature Gate Attribute!
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
