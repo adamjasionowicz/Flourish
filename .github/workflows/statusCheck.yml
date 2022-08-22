@@ -12,10 +12,8 @@ env:
   DOTNET_CORE_VERSION: 6.0.x
   WORKING_DIRECTORY: src\Flourish.Web
 jobs:
-  build:
-
+  build_status_check:
     runs-on: windows-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
