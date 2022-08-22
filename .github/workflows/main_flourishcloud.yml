@@ -1,4 +1,4 @@
-name: Build and deploy .NET Core application to Web App flourishcloud
+name: .NET Build and Deploy
 on:
   push:
     branches:
