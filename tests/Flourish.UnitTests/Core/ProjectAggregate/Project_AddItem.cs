@@ -30,5 +30,6 @@ public class Project_AddItem
 
     var ex = Assert.Throws<ArgumentNullException>(action);
     Assert.Equal("newItem", ex.ParamName);
-  }
+    Assert.Equal("breaktesttoconfrimgithubaction", ex.ParamName);
+    }
 }
