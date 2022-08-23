@@ -23,7 +23,7 @@ jobs:
     - name: Build
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
     - name: Unit Tests
-      run: dotnet test tests/Flourish.UnitTests.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=lcov/ /p:CoverletOutputFormat=lcov
+      run: dotnet test tests/Flourish.UnitTests/Flourish.UnitTests.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=lcov/ /p:CoverletOutputFormat=lcov
     - uses: actions/github-script@0.9.0
       if: failure()
       with:
@@ -37,7 +37,7 @@ jobs:
              body: body
            });
     - name: Integration Tests
-      run: dotnet test tests/Flourish.IntegrationTests.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=lcov/ /p:CoverletOutputFormat=lcov
+      run: dotnet test tests/Flourish.IntegrationTests/Flourish.IntegrationTests.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=lcov/ /p:CoverletOutputFormat=lcov
     - uses: actions/github-script@0.9.0
       if: failure()
       with:
@@ -51,7 +51,7 @@ jobs:
              body: body
            });
     - name: Functional Tests
-      run: dotnet test tests/Flourish.FunctionalTests.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=lcov/ /p:CoverletOutputFormat=lcov
+      run: dotnet test tests/Flourish.FunctionalTests/Flourish.FunctionalTests.csproj --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutput=lcov/ /p:CoverletOutputFormat=lcov
     - uses: actions/github-script@0.9.0
       if: failure()
       with:
