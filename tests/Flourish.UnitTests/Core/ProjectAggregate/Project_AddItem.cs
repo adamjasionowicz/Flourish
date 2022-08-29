@@ -5,7 +5,7 @@ namespace Flourish.UnitTests.Core.ProjectAggregate;
 
 public class Project_AddItem
 {
-  private Project _testProject = new Project("some name", PriorityStatus.Backlog);
+  private readonly Project _testProject = new("some name", PriorityStatus.Backlog);
 
   [Fact]
   public void AddsItemToItems()
@@ -25,10 +25,10 @@ public class Project_AddItem
   public void ThrowsExceptionGivenNullItem()
   {
 #nullable disable
-    Action action = () => _testProject.AddItem(null);
+        void action() => _testProject.AddItem(null);
 #nullable enable
 
-    var ex = Assert.Throws<ArgumentNullException>(action);
+        var ex = Assert.Throws<ArgumentNullException>(action);
     Assert.Equal("newItem", ex.ParamName);
-  }
+    }
 }

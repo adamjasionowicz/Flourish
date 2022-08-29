@@ -1,4 +1,4 @@
-name: Build and deploy .NET Core application to Web App flourishcloud
+name: .NET Build and Deploy
 on:
   push:
     branches:
@@ -22,8 +22,6 @@ jobs:
       run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
     - name: Build
       run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
-    - name: Test
-      run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
     - name: Publish
       run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} -r win-x86 --self-contained true --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
     - name: Deploy to Azure WebApp

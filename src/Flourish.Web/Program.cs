@@ -26,7 +26,7 @@ builder.Host.ConfigureAppConfiguration(builder =>
             .ConfigureRefresh(refresh =>
             {
               refresh.Register("TestApp:Settings:Sentinel", refreshAll: true)
-                     .SetCacheExpiration(new TimeSpan(0, 0, 10)); // AJ change to minutes in prod
+                     .SetCacheExpiration(new TimeSpan(0, 0, 5)); // AJ change to minutes in prod
             })
            .UseFeatureFlags(flagOptions =>
            {
@@ -93,6 +93,7 @@ if (app.Environment.IsDevelopment())
 else
 {
   app.UseExceptionHandler("/Home/Error");
+  // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
   app.UseHsts();
 }
 app.UseRouting();

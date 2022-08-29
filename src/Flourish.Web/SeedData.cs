@@ -25,7 +25,8 @@ public static class SeedData
 
   public static void Initialize(IServiceProvider serviceProvider)
   {
-    using (var dbContext = new AppDbContext(
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
+        using (var dbContext = new AppDbContext(
         serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>(), null))
     {
       // Look for any TODO items.
@@ -38,7 +39,8 @@ public static class SeedData
 
 
     }
-  }
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
+    }
   public static void PopulateTestData(AppDbContext dbContext)
   {
     foreach (var item in dbContext.Projects)

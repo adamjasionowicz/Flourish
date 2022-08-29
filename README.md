@@ -42,6 +42,8 @@ The application's dependencies on external resources are implemented in classes 
 
 The entry point of the application is the ASP.NET Core web project. This includes its configuration system, which uses `appsettings.json` plus environment variables, and is configured in `Startup.cs`. The project delegates to the `Infrastructure` project to wire up its services using Autofac.
 
+The web project contains multiple sandbox examples: MVC, API, Endpoints, ClientApp. This is soley for the purpose of the playground as you would not typically implement multiple entry point types in one solution.
+
 ## The Test Projects
 
 In terms of dependencies, there are three worth noting:
