@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+The following key needs to be added to the .env file: REACT_APP_AZURE_CONFIG_KEY
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

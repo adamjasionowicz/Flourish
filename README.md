@@ -1,5 +1,7 @@
 # Getting Started with Flourish
 
+The following key needs to be added to 'Manage user secrets' is visual studio: ConnectionStrings:AppConfig
+
 To get started, you need to get a copy locally. You have two options: fork or clone.
 
 You should **fork this repository** only if you plan on submitting a pull request. Or if you'd like to keep a copy of a snapshot of the repository in your own GitHub account.
