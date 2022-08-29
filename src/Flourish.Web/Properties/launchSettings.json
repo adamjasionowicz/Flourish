@@ -7,14 +7,6 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "IIS Express.SPA": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
-      }
-    },
     "Flourish.Web": {
       "commandName": "Project",
       "launchBrowser": true,
@@ -22,15 +14,6 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "http://localhost:57679/"
-    },
-    "Flourish.Web.SPA": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
-      },
-      "applicationUrl": "https://localhost:7026;http://localhost:5026"
     }
   },
   "iisSettings": {

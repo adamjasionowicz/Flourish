@@ -117,13 +117,6 @@ app.UseEndpoints(endpoints =>
   endpoints.MapRazorPages();
 });
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
-
-//SPA
-app.MapFallbackToFile("index.html");
-
 // Seed Database
 using (var scope = app.Services.CreateScope())
 {
